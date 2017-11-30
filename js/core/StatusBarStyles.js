@@ -39,7 +39,6 @@ const StatusBarStylesMgr = {
 
     // 深色样式
     dark() {
-        console.log("-----------------dark")
         StatusBar.setBarStyle('dark-content')
         if (Platform.OS === 'android') {
             StatusBar.setBackgroundColor('transparent')
@@ -49,7 +48,6 @@ const StatusBarStylesMgr = {
 
     // 浅色样式
     light() {
-        console.log("-----------------light")
         StatusBar.setBarStyle('light-content')
         if (Platform.OS === 'android') {
             StatusBar.setBackgroundColor('transparent')
