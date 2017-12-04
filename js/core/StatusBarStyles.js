@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import NavigationHelper from './NavigationHelper'
 
-const StatusBarStylesMgr = {
+const StatusBarStyles = {
 
     defaultOptions : {
         defaultStyle: "dark",          // 默认样式
@@ -88,4 +88,4 @@ const StatusBarStylesMgr = {
     }
 }
 
-export default StatusBarStylesMgr
+export default StatusBarStyles
