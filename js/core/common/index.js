@@ -57,14 +57,14 @@ function GlobalInitLogSystem(isForceShowLog = false) {
     if (isForceShowLog)
         return
 
-    if (!__DEV__) {
-        global.console = {
-            info: () => {},
-            log: () => {},
-            warn: () => {},
-            error: () => {},
-        }
-    }
+    // if (!__DEV__) {
+    //     global.console = {
+    //         info: () => {},
+    //         log: () => {},
+    //         warn: () => {},
+    //         error: () => {},
+    //     }
+    // }
 }
 
 GlobalInit()
