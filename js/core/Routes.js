@@ -67,7 +67,7 @@ if (DEMO_MODE) {
     }, {
         ...defaultNavigatorSettings,
         transitionConfig: defaultTransitionConfig,
-        initialRouteName: 'DemoToastScreen'
+        initialRouteName: 'Demo1Screen'
     })
 } else {
     Routes = StackNavigator({
