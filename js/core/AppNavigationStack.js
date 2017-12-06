@@ -7,6 +7,8 @@ import { addNavigationHelpers } from 'react-navigation'
 import Routes from './Routes'
 import NavigatorUtils from './NavigationUtils'
 
+import storage from '../core/data/Storage'
+
 // import { GlobalInit, GlobalInitLogSystem } from './common'
 // GlobalInit()
 // GlobalInitLogSystem(false)      // true强制显示日志，false关闭
@@ -22,6 +24,12 @@ import NavigatorUtils from './NavigationUtils'
 // })
 
 class AppWithNavigationState extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        global.storage = storage
+    }
 
     componentWillMount() {
         // if (Platform.OS !== 'android') return

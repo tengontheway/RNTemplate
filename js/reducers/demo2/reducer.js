@@ -1,8 +1,9 @@
 import * as types from './actions'
 
 const initialState = {
-    text: 'demo1'
+    text: 'demo2'
 }
+
 
 /**
  * 定义如何更新state
@@ -16,7 +17,7 @@ export default (state = initialState, action = {}) => {
       case "reset":       //所有的reducer必须默认实现的类型,用于重置数据(TODO优化)
           return initialState;
 
-      case types.SET_DEMO1_TITLE:
+      case types.SET_DEMO2_TITLE:
           return {
             ...state,
             text: action.text

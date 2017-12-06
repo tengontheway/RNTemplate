@@ -4,8 +4,13 @@
 import { NavigationActions, StackNavigator } from 'react-navigation'
 import React, { Component } from 'react'
 import { View, Button, Text, Easing, Animated  } from 'react-native'
-import NavigatorUtils from './NavigationUtils'
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator'
+
+import Demo1Screen from '../views/Demo1Screen'
+import Demo2Screen from '../views/Demo2Screen'
+import DemoStorageScreen from '../views/DemoStorageScreen'
+
+
 
 const defaultTransitionConfig = () => {
     return {
@@ -40,89 +45,41 @@ const defaultNavigatorSettings = {
     }
 }
 
+// TODO: 优化
+const DEMO_MODE = true
 
+let Routes
+if (DEMO_MODE) {
+    Routes = StackNavigator({
+        Demo1Screen: {
+            screen: Demo1Screen,
+        },
+        Demo2Screen: {
+            screen: Demo2Screen,
+        },
+        DemoStorageScreen: {
+            screen: DemoStorageScreen,
+        },
+    }, {
+        ...defaultNavigatorSettings,
+        transitionConfig: defaultTransitionConfig,
+        initialRouteName: 'DemoStorageScreen'
+    })
+} else {
+    Routes = StackNavigator({
+        Demo1Screen: {
+            screen: Demo1Screen,
+        },
+        Demo2Screen: {
+            screen: Demo2Screen,
+        },
+    }, {
+        ...defaultNavigatorSettings,
+        transitionConfig: defaultTransitionConfig
+    })
 
-class BackTwice extends Component {
-
-
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
-    render() {
-        console.log("-----------BackTwice")
-        // Console.dir(this.props.navigator)
-        return (
-            <Button
-                onPress = { () => {
-                    NavigatorUtils.navigate("AllContactsScreen")
-                } }
-                title = {"click me"}
-            />
-        )
-    }
 }
 
 
-
-class RecentChatsScreen extends React.Component {
-    render() {
-        console.log("------recent screen")
-        // console.dir(this.props.navigation)
-        return (
-            <View>
-                <Text>List of recent chats</Text>
-                <Button
-                    onPress = { () => this.props.navigation.navigate('AllContactsScreen', {age: 18}) }
-                    title = { "To all contacts screen" }
-                />
-                <BackTwice />
-            </View>
-        )
-    }
-}
-
-class AllContactsScreen extends React.Component {
-    render() {
-        console.log("------recent AllContactsScreen")
-        // console.dir(this.props.navigation)
-        return (
-            <View>
-                <Text>List of all contacts</Text>
-
-            </View>
-        )
-    }
-}
-
-const Routes = StackNavigator({
-    // Splash: {
-    //     screen: Splash
-    // },
-    // Signup: {
-    //     screen: SignUp
-    // },
-    // Login: {
-    //     screen: SignIn
-    // },
-    // ForgottenPassword: {
-    //     screen: ForgottenPassword
-    // },
-    // WeLoggedIn: {
-    //     screen: WeLoggedIn  // Notice how the screen is a StackNavigator
-    // },                       // now you understand how it works!
-
-    RecentChatsScreen: {
-        screen: RecentChatsScreen,
-    },
-    AllContactsScreen: {
-        screen: AllContactsScreen,
-    },
-}, {
-    ...defaultNavigatorSettings,
-    transitionConfig: defaultTransitionConfig
-})
 
 export default Routes
