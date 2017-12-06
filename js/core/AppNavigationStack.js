@@ -17,6 +17,7 @@ import * as CoreConstants from './config/CoreConstant'
 import * as Constants from '../config/Constants'
 import request from './network/Request'
 import auth from './Auth'
+import CToast from "./Toast"
 
 global.storage = storage
 global.constant = {
@@ -25,6 +26,7 @@ global.constant = {
 }
 global.config = Config
 global.auth = auth
+global.toast = CToast
 
 
 // import { EStyleSheet, getRemByDimensions } from './common';

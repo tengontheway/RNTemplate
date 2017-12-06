@@ -9,6 +9,7 @@ import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/Car
 import Demo1Screen from '../views/Demo1Screen'
 import Demo2Screen from '../views/Demo2Screen'
 import DemoStorageScreen from '../views/DemoStorageScreen'
+import DemoToastScreen from '../views/DemoToastScreen'
 
 
 
@@ -60,10 +61,13 @@ if (DEMO_MODE) {
         DemoStorageScreen: {
             screen: DemoStorageScreen,
         },
+        DemoToastScreen: {
+            screen: DemoToastScreen,
+        }
     }, {
         ...defaultNavigatorSettings,
         transitionConfig: defaultTransitionConfig,
-        initialRouteName: 'DemoStorageScreen'
+        initialRouteName: 'DemoToastScreen'
     })
 } else {
     Routes = StackNavigator({
