@@ -45,7 +45,7 @@ import
     Dimensions,
     PixelRatio,
 } from 'react-native';
-import {Constant} from '../../config/Constant';
+import {Constant} from '../../config/CoreConstant';
 let {height, width} = Dimensions.get('window');
 
 import Button from 'react-native-button';

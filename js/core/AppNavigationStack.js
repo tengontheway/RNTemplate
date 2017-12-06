@@ -7,16 +7,25 @@ import { addNavigationHelpers } from 'react-navigation'
 import Routes from './Routes'
 import NavigatorUtils from './NavigationUtils'
 
+import { GlobalInit, GlobalInitLogSystem } from './common'
+GlobalInit()
+GlobalInitLogSystem(false)      // true强制显示日志，false关闭
+
+import Config from './config/Config'
 import storage from '../core/data/Storage'
+import * as CoreConstants from './config/CoreConstant'
+import * as Constants from '../config/Constants'
+import request from './network/Request'
+import auth from './Auth'
 
-// import { GlobalInit, GlobalInitLogSystem } from './common'
-// GlobalInit()
-// GlobalInitLogSystem(false)      // true强制显示日志，false关闭
+global.storage = storage
+global.constant = {
+    ...CoreConstants,
+    ...Constants
+}
+global.config = Config
+global.auth = auth
 
-// import {Constant} from './js/config/Constant'
-// import AppConfig from './js/config/AppConfig'
-// global.constant = Constant
-// global.appconfig = AppConfig
 
 // import { EStyleSheet, getRemByDimensions } from './common';
 // EStyleSheet.build({
@@ -28,7 +37,22 @@ class AppWithNavigationState extends React.Component {
     constructor(props) {
         super(props)
 
-        global.storage = storage
+        request.setDefaultOptions({
+            host: config.apiHost,
+            beforeSend: (options) => {
+                return auth.getTokens()
+                    .then(res => {
+                        options.headers.append('Authorization', `Bearer ${res.access_token}`)
+                    })
+                    .catch(() => {})
+            },
+            unauth: (options) => {
+                return auth.logout().then(() => {
+                    global.Toast &&Toast.show('你的登录已过期，请重新登录', 2000)
+                    NavigatorUtils.reset("Login")
+                })
+            }
+        })
     }
 
     componentWillMount() {

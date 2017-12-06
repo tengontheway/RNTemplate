@@ -14,7 +14,7 @@ import {
     PixelRatio,
     Dimensions,
 } from 'react-native';
-import {Constant} from '../config/Constant';
+import {Constant} from '../config/CoreConstant';
 var cell_w = Dimensions.get('window').width;
 var GameStyles = StyleSheet.create({
     // 所有注册的根节点
@@ -36,11 +36,11 @@ var GameStyles = StyleSheet.create({
     },
     bas_but_con: {
         flex: 1,
-        padding: Constant.DEFAULT_BUT_PADDING,
+        padding: 0,//Constant.DEFAULT_BUT_PADDING,
         overflow: 'hidden',
     },
     bas_but: {
-        fontSize: Constant.FT_DEFAULT_TITLE,
+        fontSize: 0,//Constant.FT_DEFAULT_TITLE,
         color: '#FFF',
         fontWeight: 'bold',
     },
