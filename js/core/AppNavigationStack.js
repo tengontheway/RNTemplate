@@ -18,6 +18,7 @@ import * as Constants from '../config/Constants'
 import request from './network/Request'
 import auth from './Auth'
 import CToast from "./Toast"
+import SplashScreen from 'react-native-splash-screen'
 
 global.storage = storage
 global.constant = {
@@ -39,6 +40,8 @@ class AppWithNavigationState extends React.Component {
     constructor(props) {
         super(props)
 
+
+
         request.setDefaultOptions({
             host: config.apiHost,
             beforeSend: (options) => {
@@ -50,24 +53,25 @@ class AppWithNavigationState extends React.Component {
             },
             unauth: (options) => {
                 return auth.logout().then(() => {
-                    global.Toast &&Toast.show('你的登录已过期，请重新登录', 2000)
+                    toast.showCenterLong('你的登录已过期，请重新登录')
                     NavigatorUtils.reset("Login")
                 })
             }
         })
     }
 
-    componentWillMount() {
-        // if (Platform.OS !== 'android') return
-        // BackHandler.addEventListener('hardwareBackPress', () => {
-        //     const { dispatch } = this.props
-        //     dispatch({ type: 'Navigation/BACK' })
-        //     return true
-        // })
+    closeSplash = () => {
+        SplashScreen.hide()
+
+        // Check hot update.
     }
 
-    componentWillUnmount() {
-        // if (Platform.OS === 'android') BackHandler.removeEventListener('hardwareBackPress')
+    componentWillMount() {
+
+    }
+
+    componentDidMount() {
+        this.closeSplash()
     }
 
     render() {

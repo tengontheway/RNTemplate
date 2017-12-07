@@ -12,7 +12,7 @@ export default class extends Component {
         return (
             <Button
                 onPress = { () => {
-                    NavigatorUtils.navigate("Demo1Screen")
+                    NavigatorUtils.navigate("Demo1")
                 } }
                 title = {"click me"}
             />

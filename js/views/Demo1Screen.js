@@ -19,7 +19,7 @@ class Demo1Screen extends React.Component {
             <View>
                 <Text>List of recent chats: {this.props.demo1Title}</Text>
                 <Button
-                    onPress = { () => this.props.navigation.navigate('Demo2Screen', {age: 18}) }
+                    onPress = { () => this.props.navigation.navigate('Demo2', {age: 18}) }
                     title = { "To all contacts screen" }
                 />
                 <DemoUnbindViewNavigatorActions />
