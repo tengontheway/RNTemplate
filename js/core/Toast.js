@@ -6,14 +6,8 @@ import Toast from 'react-native-root-toast'
 
 
 let {
-    durations,
     positions
 } = Toast
-
-const new_durations = {
-    LONG: 2000,
-    SHORT: 500
-}
 
 let defaultOptions = {
     LONG: 2000,
